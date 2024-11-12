@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')();
-const {cadastrarFuncionario} = require('./cadastroDeFuncionario');
+const {cadastrarFuncionario} = require('./Funcionario');
+const { imprimirRelatorioDePagemento } = require('./Pagamento');
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
@@ -18,7 +19,8 @@ switch (opcao) {
         console.log("Calcular Folha de Pagamento")
         break;
     case "4":
-        console.log("Sair")
+        console.log("Imprimir Relatorio de Pagamento")
+        imprimirRelatorioDePagemento();
         break;
     default:
         console.log("Opção inválida")
