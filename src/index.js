@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const {cadastrarFuncionario} = require('./Funcionario');
+const { adicionarFuncionario, registrarHoras, localizarFuncionarioPorNome  } = require('./Funcionario');
 const { imprimirRelatorioDePagemento } = require('./Pagamento');
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
@@ -9,20 +9,39 @@ let opcao = prompt("Digite o número correspondente a opção desejada: \n1 - Ca
 switch (opcao) {
     case "1":
         console.log("\nCadastrar Funcionário")
+        console.log("\n------------------------")
         console.log("\nPreencha os campos abaixo:")
-        cadastrarFuncionario();
+        adicionarFuncionario ();
         break;
     case "2":
-        console.log("Listar Funcionários")
+        console.log("\nRegistrar Horas Trabalhadas")
+        console.log("\n------------------------")
+        console.log("\nPreencha os campos abaixo:")
+        const mome = prompt("\nDigite o nome do funcionário: ");
+        const funcionario = localizarFuncionarioPorNome(nome.tolowerCase());
+
+        if (!funcionario) {
+            console.log("\nFuncionário não encontrado");
+            break;
+        }
+
+        const horas = prompt("\nDigite a quantidade de horas trabalhadas: ");
+
+        registrarHoras (funcionario.id, horas);
         break;
     case "3":
-        console.log("Calcular Folha de Pagamento")
+        console.log("\nListar Funcionários")
+        console.log("\n------------------------")
+        console.log("\nPLista de Funcionários:")
         break;
     case "4":
-        console.log("Imprimir Relatorio de Pagamento")
+        console.log("\nCalcular Folha de Pagamento")
+        break;
+    case "5":
+        console.log("\nImprimir Relatorio de Pagamento")
         imprimirRelatorioDePagemento();
         break;
     default:
-        console.log("Opção inválida")
+        console.log("\nOpção inválida")
         break;
 }
