@@ -15,10 +15,10 @@ switch (opcao) {
         break;
     case "2":
         console.log("\nRegistrar Horas Trabalhadas")
-        console.log("\n------------------------")
-        console.log("\nPreencha os campos abaixo:")
-        const mome = prompt("\nDigite o nome do funcionário: ");
-        const funcionario = localizarFuncionarioPorNome(nome.tolowerCase());
+        console.log("------------------------")
+        console.log("Preencha os campos abaixo:")
+        const nome = prompt("\nDigite o nome do funcionário: ");
+        const funcionario = localizarFuncionarioPorNome(nome.toLowerCase());
 
         if (!funcionario) {
             console.log("\nFuncionário não encontrado");
