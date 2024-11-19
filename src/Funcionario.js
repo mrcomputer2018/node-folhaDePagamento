@@ -11,7 +11,13 @@ function adicionarFuncionario () {
    const taxaHoraria = prompt("Digite a taxa horária do funcionário: ");
    const horaTrabalhada = prompt("Digite a hora trabalhada do funcionário: ");
 
-   horasTrabalhadas.push(horaTrabalhada);
+   const newHoratrabalhada = {
+        id: v4(),
+        horaTrabalhada: horaTrabalhada,
+        data : new Date()
+   }
+
+   horasTrabalhadas.push(newHoratrabalhada);
 
     const funcionario = {
         id: v4(),
@@ -25,6 +31,7 @@ function adicionarFuncionario () {
     
     console.log("\n\nFuncionário cadastrado com sucesso!");
     console.log(funcionarios);
+    return funcionarios;
 }
 
 
@@ -39,8 +46,14 @@ function registrarHoras(id, horas) {
         return;
     }
 
-    funcionario.horasTrabalhadas.push(horas);
-    console.log("Horas registradas com sucesso!");
+    const newHoratrabalhada = {
+        id: v4(),
+        horaTrabalhada: horas,
+        data : new Date()
+   }
+
+    funcionario.horasTrabalhadas.push(newHoratrabalhada);
+    console.log(">>> Horas registradas com sucesso!");
     console.log(funcionario);
 }
 
