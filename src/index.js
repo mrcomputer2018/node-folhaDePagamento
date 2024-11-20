@@ -1,7 +1,8 @@
 const prompt = require('prompt-sync')();
 const { adicionarFuncionario, registrarHoras, localizarFuncionarioPorNome  } = require('./Funcionario');
-const { imprimirRelatorioDePagemento } = require('./Pagamento');
+const {  gerarRelatorioPagamento } = require('./Pagamento');
 const { calcularSalarioMensal } = require('./Salario');
+const { calcularInss } = require('./Inss');
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
@@ -9,9 +10,9 @@ let continuar = "s";
 
 while (continuar === "s" || continuar === "S") {
 
-    let nome = '';
     let funcionario = [];
     let funcionarioFilter = [];
+    let nome = "";
 
     const opcao = prompt("Digite o número correspondente a opção desejada: \n1 - Cadastrar Funcionário\n2 - Registrar Horas Trabalhadas\n3 - Listar Funcionários\n4 - Calcular Folha de Pagamento\n5 - Imprimir Relatorio de Pagamento\n6 - Sair\n")
 
@@ -20,12 +21,11 @@ while (continuar === "s" || continuar === "S") {
             console.log("\nCadastrar Funcionário")
             console.log("\n------------------------")
             console.log("\nPreencha os campos abaixo:")
-            funcionario = adicionarFuncionario ();
+            funcionario = adicionarFuncionario();
             break;
         case "2":
             console.log("\nRegistrar Horas Trabalhadas")
             console.log("------------------------")
-            console.log("Preencha os campos abaixo:")
             nome = prompt("\nDigite o nome do funcionário: ");
             funcionarioFilter = localizarFuncionarioPorNome(nome.toLowerCase());
 
@@ -57,13 +57,20 @@ while (continuar === "s" || continuar === "S") {
             }
 
             const salario = calcularSalarioMensal(funcionarioFilter);
+            const INSS =  calcularInss(salario);
 
-            console.log(`\nO salário mensal do funcionário ${funcionarioFilter.nome} é R$ ${salario}`);
+            console.log(`\nO salário mensal bruto do funcionário ${funcionarioFilter.nome} é R$ ${salario}`);
+            console.log(`\nO desconto do INSS do funcionário ${funcionarioFilter.nome} é R$ ${INSS}`);
 
             break;
         case "5":
             console.log("\nImprimir Relatorio de Pagamento")
-            imprimirRelatorioDePagemento();
+            console.log("\n------------------------")
+            console.log("Preencha os campos abaixo:")
+
+            nome = prompt("\nDigite o nome do funcionário: ");
+            gerarRelatorioPagamento(nome);
+
             break;
         case "6":
             console.log("\nSair")
