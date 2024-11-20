@@ -57,6 +57,17 @@ function registrarHoras(id, horas) {
     console.log(funcionario);
 }
 
+function horasTrabalhadasFuncionario(funcionario) {
+    let totalHoras = 0;
+
+    funcionario.horasTrabalhadas.forEach(hora => {
+        totalHoras += parseInt(hora.horaTrabalhada);
+    });
+
+    return totalHoras;
+
+}
+
 
 // A função deve localizar o funcionário por nome e retornar o objeto do funcionário.
 function localizarFuncionarioPorNome(nome) {
@@ -68,4 +79,5 @@ module.exports = {
     adicionarFuncionario,
     registrarHoras,
     localizarFuncionarioPorNome,
+    horasTrabalhadasFuncionario
 };
