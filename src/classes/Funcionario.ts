@@ -13,7 +13,7 @@ export default class Funcionario {
         this.nome = nome;
         this.cargo = cargo;
         this.taxaHoraria = taxaHoraria;
-        this.horasTrabalhadas = horasTrabalhadas;
+        this.horasTrabalhadas = horasTrabalhadas ?? [];
     }
 }
 
