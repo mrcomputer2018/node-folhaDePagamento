@@ -1,6 +1,22 @@
 const prompt = require('prompt-sync')();
 const { v4 } = require('uuid');
 
+export default class Funcionario {
+    private readonly id: string;
+    private nome: string
+    private cargo: string;
+    private taxaHoraria: number;
+    private horasTrabalhadas: number[] | null;
+
+    constructor(nome: string, cargo: string, taxaHoraria: number, horasTrabalhadas: number[] | null = null) {
+        this.id = v4();
+        this.nome = nome;
+        this.cargo = cargo;
+        this.taxaHoraria = taxaHoraria;
+        this.horasTrabalhadas = horasTrabalhadas;
+    }
+}
+
 const funcionarios = [];
 const horasTrabalhadas = [];
 

@@ -1,6 +1,6 @@
 const { localizarFuncionarioPorNome, horasTrabalhadasFuncionario } = require("./Funcionario");
 const { calcularSalarioMensal } = require("./Salario");
-const { calcularInss } = require("./Inss");
+const { calcularInss } = require("./inss");
 
 
 function gerarRelatorioPagamento(nome) {

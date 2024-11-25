@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')();
 const { adicionarFuncionario, registrarHoras, localizarFuncionarioPorNome  } = require('./Funcionario');
 const {  gerarRelatorioPagamento } = require('./Pagamento');
 const { calcularSalarioMensal } = require('./Salario');
-const { calcularInss } = require('./Inss');
+const { calcularInss } = require('./inss');
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
