@@ -1,19 +1,12 @@
 import Funcionario from "./classes/Funcionario";
-
+import HoraTrabalhada from "./classes/HoraTrabalhada";
 const prompt = require('prompt-sync')();
-const {  gerarRelatorioPagamento } = require('./Pagamento');
-const { calcularSalarioMensal } = require('./Salario');
-const { calcularInss } = require('./inss');
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
 let continuar = "s";
 
-
 while (continuar === "s" || continuar === "S") {
-
-    let funcionarioFilter = [];
-    let nome = "";
 
     const opcao = prompt("Digite o número correspondente a opção desejada: \n1 - Cadastrar Funcionário\n2 - Registrar Horas Trabalhadas\n3 - Listar Funcionários\n4 - Calcular Folha de Pagamento\n5 - Imprimir Relatorio de Pagamento\n6 - Sair\n")
 
@@ -23,20 +16,22 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("\nPreencha os campos abaixo:")
 
-           /*  const nome = prompt("Digite o nome do funcionário: ");
+            const nome = prompt("Digite o nome do funcionário: ");
             const cargo = prompt("Digite o cargo do funcionário: ");
             const taxaHoraria = +prompt("Digite a taxa horária do funcionário: ");
-            const horaTrabalhada = +prompt("Digite a hora trabalhada do funcionário: ");
+            
+            const funcionario = new Funcionario(nome, cargo, taxaHoraria);
+            
+            console.log(funcionario.getDetalhesFuncionario());
 
-            const funcionario = new Funcionario(nome, cargo, taxaHoraria, horaTrabalhada);
- */
-
+            console.log("\n\nFuncionário cadastrado com sucesso!");
             
             break;
+
         case "2":
             console.log("\nRegistrar Horas Trabalhadas")
             console.log("------------------------")
-            nome = prompt("\nDigite o nome do funcionário: ");
+           /* nome = prompt("\nDigite o nome do funcionário: ");
             funcionarioFilter = localizarFuncionarioPorNome(nome.toLowerCase());
 
             if (!funcionarioFilter) {
@@ -46,7 +41,13 @@ while (continuar === "s" || continuar === "S") {
 
             const horas = prompt("\nDigite a quantidade de horas trabalhadas: ");
 
-            registrarHoras (funcionarioFilter.id, horas);
+            registrarHoras (funcionarioFilter.id, horas); */
+            const horaTrabalhada = prompt("\nDigite a quantidade de horas trabalhadas: ");
+            
+            const horasTrabalhadas: HoraTrabalhada[] = [];
+
+            const horatrabalhada = new HoraTrabalhada(horaTrabalhada);
+
             break;
         case "3":
             console.log("\nListar Funcionários")
@@ -58,7 +59,7 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("Preencha os campos abaixo:")
 
-            nome = prompt("\nDigite o nome do funcionário: ");
+            /* nome = prompt("\nDigite o nome do funcionário: ");
             funcionarioFilter = localizarFuncionarioPorNome(nome.toLowerCase());
 
             if (!funcionarioFilter) {
@@ -70,7 +71,7 @@ while (continuar === "s" || continuar === "S") {
             const INSS =  calcularInss(salario);
 
             console.log(`\nO salário mensal bruto do funcionário ${funcionarioFilter.nome} é R$ ${salario}`);
-            console.log(`\nO desconto do INSS do funcionário ${funcionarioFilter.nome} é R$ ${INSS}`);
+            console.log(`\nO desconto do INSS do funcionário ${funcionarioFilter.nome} é R$ ${INSS}`); */
 
             break;
         case "5":
@@ -78,8 +79,8 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("Preencha os campos abaixo:")
 
-            nome = prompt("\nDigite o nome do funcionário: ");
-            gerarRelatorioPagamento(nome);
+          /*   nome = prompt("\nDigite o nome do funcionário: ");
+            gerarRelatorioPagamento(nome); */
 
             break;
         case "6":

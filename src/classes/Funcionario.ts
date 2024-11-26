@@ -1,4 +1,4 @@
-import Horatrabalhada from "./Horatrabalhada";
+import Horatrabalhada from "./HoraTrabalhada";
 const prompt = require('prompt-sync')();
 import { v4 } from 'uuid';
 
@@ -23,22 +23,12 @@ export default class Funcionario {
     }
 
     setHorasTrabalhadas(horasTrabalhadas: Horatrabalhada[]) { 
-        this.horasTrabalhadas = horasTrabalhadas;
+        const newHorasTrabalhadas = [...(this.horasTrabalhadas ?? []), ...horasTrabalhadas];
+        this.horasTrabalhadas = newHorasTrabalhadas;
     }
    
     //METODOS
-    adicionarFuncionario () {
-        const horasTrabalhadas: Horatrabalhada[] = [];
-        
-        const newHoratrabalhada = new Horatrabalhada(horaTrabalhada);
-        horasTrabalhadas.push(newHoratrabalhada);
-                
-        console.log("\n\nFuncionário cadastrado com sucesso!");
-        console.log(funcionario);
-        return funcionario;
-    }
-
-    localizarFuncionarioPorNome(nome) {
+    /* localizarFuncionarioPorNome(nome) {
         return funcionarios.find(funcionario => funcionario.nome === nome);
     }
 
@@ -60,16 +50,23 @@ export default class Funcionario {
         funcionario.horasTrabalhadas.push(newHoratrabalhada);
         console.log(">>> Horas registradas com sucesso!");
         console.log(funcionario);
-    }
+    } */
 
-    horasTrabalhadasFuncionario(funcionario) {
+    private horasTrabalhadasFuncionario() {
         let totalHoras = 0;
     
-        funcionario.horasTrabalhadas.forEach(hora => {
+       /*  this.horasTrabalhadas.forEach(hora => {
             totalHoras += parseInt(hora.horaTrabalhada);
         });
-    
+     */
         return totalHoras;
     
+    }
+
+    getDetalhesFuncionario(): string { 
+        return `\nNome: ${this.nome}` +
+        `\nCargo: ${this.cargo}` +
+        `\nTaxa Horária: ${this.taxaHoraria}` +
+        `\nHoras Trabalhadas: ${this.horasTrabalhadasFuncionario()}`;
     }
 }
