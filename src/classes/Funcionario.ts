@@ -1,14 +1,15 @@
+import Horatrabalhada from "./Horatrabalhada";
 const prompt = require('prompt-sync')();
-const { v4 } = require('uuid');
+import { v4 } from 'uuid';
 
 export default class Funcionario {
     private readonly id: string;
     private nome: string
     private cargo: string;
     private taxaHoraria: number;
-    private horasTrabalhadas: number[] | null;
+    private horasTrabalhadas: Horatrabalhada[] | null;
 
-    constructor(nome: string, cargo: string, taxaHoraria: number, horasTrabalhadas: number[] | null = null) {
+    constructor(nome: string, cargo: string, taxaHoraria: number, horasTrabalhadas: Horatrabalhada[] | null = null) {
         this.id = v4();
         this.nome = nome;
         this.cargo = cargo;
@@ -16,41 +17,25 @@ export default class Funcionario {
         this.horasTrabalhadas = horasTrabalhadas ?? [];
     }
 
+    //getters e setters
+    getHorasTrabalhadas() {
+        return this.horasTrabalhadas;
+    }
 
-    /*  
-        const funcionarios = [];
-        const horasTrabalhadas = [];
-    */
+    setHorasTrabalhadas(horasTrabalhadas: Horatrabalhada[]) { 
+        this.horasTrabalhadas = horasTrabalhadas;
+    }
    
     //METODOS
     adicionarFuncionario () {
-        // código para cadastrar funcionário
-       const nome = prompt("Digite o nome do funcionário: ");
-       const cargo = prompt("Digite o cargo do funcionário: ");
-       const taxaHoraria = prompt("Digite a taxa horária do funcionário: ");
-       const horaTrabalhada = prompt("Digite a hora trabalhada do funcionário: ");
-    
-       const newHoratrabalhada = {
-            id: v4(),
-            horaTrabalhada: horaTrabalhada,
-            data : new Date()
-       }
-    
-       horasTrabalhadas.push(newHoratrabalhada);
-    
-        const funcionario = {
-            id: v4(),
-            nome: nome,
-            cargo: cargo,
-            taxaHoraria: taxaHoraria,
-            horasTrabalhadas : horasTrabalhadas
-        };
-    
-        funcionarios.push(funcionario);
+        const horasTrabalhadas: Horatrabalhada[] = [];
         
+        const newHoratrabalhada = new Horatrabalhada(horaTrabalhada);
+        horasTrabalhadas.push(newHoratrabalhada);
+                
         console.log("\n\nFuncionário cadastrado com sucesso!");
-        console.log(funcionarios);
-        return funcionarios;
+        console.log(funcionario);
+        return funcionario;
     }
 
     localizarFuncionarioPorNome(nome) {

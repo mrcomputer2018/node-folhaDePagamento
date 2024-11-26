@@ -1,5 +1,6 @@
+import Funcionario from "./classes/Funcionario";
+
 const prompt = require('prompt-sync')();
-const { adicionarFuncionario, registrarHoras, localizarFuncionarioPorNome  } = require('./Funcionario');
 const {  gerarRelatorioPagamento } = require('./Pagamento');
 const { calcularSalarioMensal } = require('./Salario');
 const { calcularInss } = require('./inss');
@@ -8,9 +9,9 @@ console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
 let continuar = "s";
 
+
 while (continuar === "s" || continuar === "S") {
 
-    let funcionario = [];
     let funcionarioFilter = [];
     let nome = "";
 
@@ -21,7 +22,16 @@ while (continuar === "s" || continuar === "S") {
             console.log("\nCadastrar Funcionário")
             console.log("\n------------------------")
             console.log("\nPreencha os campos abaixo:")
-            funcionario = adicionarFuncionario();
+
+           /*  const nome = prompt("Digite o nome do funcionário: ");
+            const cargo = prompt("Digite o cargo do funcionário: ");
+            const taxaHoraria = +prompt("Digite a taxa horária do funcionário: ");
+            const horaTrabalhada = +prompt("Digite a hora trabalhada do funcionário: ");
+
+            const funcionario = new Funcionario(nome, cargo, taxaHoraria, horaTrabalhada);
+ */
+
+            
             break;
         case "2":
             console.log("\nRegistrar Horas Trabalhadas")
