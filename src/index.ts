@@ -48,6 +48,12 @@ while (continuar === "s" || continuar === "S") {
 
             const horatrabalhada = new HoraTrabalhada(horaTrabalhada);
 
+            horasTrabalhadas.push(horatrabalhada);
+
+            console.log(horasTrabalhadas);
+
+            console.log("\nHoras registradas com sucesso!");
+
             break;
         case "3":
             console.log("\nListar Funcionários")
