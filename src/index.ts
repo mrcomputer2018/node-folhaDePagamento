@@ -10,7 +10,7 @@ let continuar = "s";
 const funcionarios: Funcionario[] = [];
 const listHorasTrabalhadas: HoraTrabalhada[] = []
 const funcionario: Funcionario = new Funcionario("", "", 0);
-const horasTrabalhadas: Horatrabalhada = new HoraTrabalhada(0)
+/* const horasTrabalhadas: Horatrabalhada = new HoraTrabalhada(0) */
 
 while (continuar === "s" || continuar === "S") {
 
@@ -42,22 +42,23 @@ while (continuar === "s" || continuar === "S") {
             console.log("------------------------")
             console.log("\nPreencha os campos abaixo:")
 
-            const funcionarioEncontrado = funcionario.localizarFuncionarioPorNome(funcionarios);
+            // Verifica se o funcionário existe
+            let funcionarioEncontrado = funcionario.localizarFuncionarioPorNome(funcionarios);
 
             if (funcionarioEncontrado === null) {
                 break;
             }
         
+            // Pergunta a quantidade de horas trabalhadas e registrar
             const horas = +prompt("\nDigite a quantidade de horas trabalhadas: ");
 
             const novaHoraTrabalhada = new HoraTrabalhada(horas); // Criação de uma nova instância
             
             listHorasTrabalhadas.push(novaHoraTrabalhada);
 
-           
+           // Adiciona as horas trabalhadas ao funcionário
             funcionarioEncontrado.setHorasTrabalhadas(listHorasTrabalhadas);
            
-
             console.log(listHorasTrabalhadas);
 
             console.log("\nHoras registradas com sucesso!");
@@ -68,7 +69,14 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("\nLista de Funcionários:")
 
-            console.log(funcionarios)
+            if (funcionarios.length === 0) {
+                console.log("\nNão há funcionários cadastrados")
+                break;
+            }
+
+            funcionarios.forEach(funcionario => {
+                console.log(funcionario.getDetalhesFuncionario());
+            });
 
             break;
         case "4":
@@ -76,16 +84,19 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("Preencha os campos abaixo:")
 
-            if (funcionario.getHorasTrabalhadas() === undefined) {
+             // Verifica se o funcionário existe
+             funcionarioEncontrado = funcionario.localizarFuncionarioPorNome(funcionarios);
+
+             if (funcionarioEncontrado === null) {
+                 break;
+             }
+
+            if ( funcionarioEncontrado.getHorasTrabalhadas() === undefined) {
                 console.log("\nFuncionário não possui horas trabalhadas registradas")
                 break;
             }
 
-            if (funcionario.localizarFuncionarioPorNome(funcionarios) === null) {
-                break;
-            }
-
-            console.log("Salario mensal de R$" + funcionario.calcularSalarioMensal());
+            console.log("Salario mensal de R$" +  funcionarioEncontrado.calcularSalarioMensal());
 
             break;
         case "5":
