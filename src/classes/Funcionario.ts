@@ -75,7 +75,7 @@ export default class Funcionario {
     }
 
     calcularInss(): number {
-        const salario = this.calcularSalarioMensal();
+        const salario: number = this.calcularSalarioMensal();
         let inss = 0;
     
         if (salario <= 1412) {
