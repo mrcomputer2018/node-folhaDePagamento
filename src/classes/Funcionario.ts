@@ -1,4 +1,4 @@
-import Horatrabalhada from "./HoraTrabalhada";
+import Horatrabalhada from "./Horatrabalhada";
 import { v4 } from 'uuid';
 const prompt = require('prompt-sync')();
 
