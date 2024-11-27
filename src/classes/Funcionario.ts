@@ -74,6 +74,25 @@ export default class Funcionario {
     
     }
 
+    calcularInss(): number {
+        const salario = this.calcularSalarioMensal();
+        let inss = 0;
+    
+        if (salario <= 1412) {
+            inss = salario * 0.075;
+        } else if (salario > 1412 && salario <= 2666.68) {
+            inss = salario * 0.09;
+        } else if (salario > 2666.69 && salario <= 4000.03) {
+            inss = salario * 0.12;
+        } else if (salario > 4000.04 && salario <= 7786.02) {
+            inss = salario * 0.14;
+        } else {
+            inss = 751.99;
+        }
+    
+        return parseFloat(inss.toFixed(2));
+    }
+
     getDetalhesFuncionario(): string { 
         return `\nNome: ${this.nome}` +
         `\nCargo: ${this.cargo}` +
