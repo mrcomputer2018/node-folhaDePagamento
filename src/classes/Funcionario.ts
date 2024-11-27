@@ -78,6 +78,7 @@ export default class Funcionario {
         return `\nNome: ${this.nome}` +
         `\nCargo: ${this.cargo}` +
         `\nTaxa Horária: ${this.taxaHoraria}` +
-        `\nHoras Trabalhadas: ${this.horasTrabalhadasFuncionario()}`;
+        `\nHoras Trabalhadas: ${this.horasTrabalhadasFuncionario()}hs` +
+        `\nSalário Mensal: R$ ${this.calcularSalarioMensal()}`;
     }
 }

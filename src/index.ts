@@ -8,9 +8,9 @@ console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 let continuar = "s";
 
 const funcionarios: Funcionario[] = [];
-const listHorasTrabalhadas: HoraTrabalhada[] = []
+let listHorasTrabalhadas: HoraTrabalhada[] = []
 const funcionario: Funcionario = new Funcionario("", "", 0);
-/* const horasTrabalhadas: Horatrabalhada = new HoraTrabalhada(0) */
+const horasTrabalhadas: Horatrabalhada = new HoraTrabalhada(0)
 
 while (continuar === "s" || continuar === "S") {
 
@@ -48,7 +48,10 @@ while (continuar === "s" || continuar === "S") {
             if (funcionarioEncontrado === null) {
                 break;
             }
-        
+
+           // Verifica se o funcionário já possui horas trabalhadas registradas e se não possuir, cria um array vazio
+            listHorasTrabalhadas = funcionarioEncontrado.getHorasTrabalhadas() || [];
+            
             // Pergunta a quantidade de horas trabalhadas e registrar
             const horas = +prompt("\nDigite a quantidade de horas trabalhadas: ");
 
