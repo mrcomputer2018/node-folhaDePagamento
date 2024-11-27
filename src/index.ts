@@ -107,8 +107,16 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("Preencha os campos abaixo:")
 
-          /*   nome = prompt("\nDigite o nome do funcionário: ");
-            gerarRelatorioPagamento(nome); */
+            // Verifica se o funcionário existe
+            funcionarioEncontrado = funcionario.localizarFuncionarioPorNome(funcionarios);
+
+            if (funcionarioEncontrado === null) {
+                break;
+            }
+
+            console.log("\nRelatório de Pagamento")
+            console.log("\n------------------------")
+            console.log(funcionarioEncontrado.gerarRelatorioPagamento());
 
             break;
         case "6":

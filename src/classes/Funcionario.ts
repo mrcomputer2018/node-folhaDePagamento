@@ -93,6 +93,16 @@ export default class Funcionario {
         return parseFloat(inss.toFixed(2));
     }
 
+    gerarRelatorioPagamento (): string { 
+        return `\nNome: ${this.nome}` +
+        `\nCargo: ${this.cargo}` +
+        `\nTaxa Horária: ${this.taxaHoraria}` +
+        `\nHoras Trabalhadas: ${this.horasTrabalhadasFuncionario()}hs` +
+        `\nSalário Mensal: R$ ${this.calcularSalarioMensal()}` +
+        `\nINSS: R$ ${this.calcularInss()}` +
+        `\nSalário Líquido: R$ ${this.calcularSalarioMensal() - this.calcularInss()}`;
+    }
+
     getDetalhesFuncionario(): string { 
         return `\nNome: ${this.nome}` +
         `\nCargo: ${this.cargo}` +
