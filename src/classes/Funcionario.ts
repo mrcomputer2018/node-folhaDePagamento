@@ -1,8 +1,9 @@
 import Horatrabalhada from "./HoraTrabalhada";
-const prompt = require('prompt-sync')();
 import { v4 } from 'uuid';
+const prompt = require('prompt-sync')();
 
 export default class Funcionario {
+    [x: string]: any;
     private readonly id: string;
     private nome: string
     private cargo: string;
@@ -18,59 +19,57 @@ export default class Funcionario {
     }
 
     //getters e setters
-    getHorasTrabalhadas() {
+    getNome():string {
+        return this.nome
+    }
+
+    getHorasTrabalhadas(): Horatrabalhada[] | null {
         return this.horasTrabalhadas;
     }
 
-    setNome(nome: string) {
+    setNome(nome: string): void {
         this.nome = nome
     }
 
-    setCargo(cargo: string){
+    setCargo(cargo: string): void {
         this.cargo = cargo
     }
 
-    setTaxaHoraria(taxaHoraria: number) {
+    setTaxaHoraria(taxaHoraria: number): void {
         this.taxaHoraria = taxaHoraria;
     }
 
-    setHorasTrabalhadas(horasTrabalhadas: Horatrabalhada[]) { 
-        const newHorasTrabalhadas = [...(this.horasTrabalhadas ?? []), ...horasTrabalhadas];
-        this.horasTrabalhadas = newHorasTrabalhadas;
+    setHorasTrabalhadas(horasTrabalhadas: Horatrabalhada[]): void { 
+        this.horasTrabalhadas = horasTrabalhadas
     }
    
     //METODOS
-    /* localizarFuncionarioPorNome(nome) {
-        return funcionarios.find(funcionario => funcionario.nome === nome);
+    localizarFuncionarioPorNome( funcionarios: Funcionario[]) {
+        const nomeFuncionario = prompt("\nDigite o nome do funcionário: ");
+
+        const funcionarioFilter = funcionarios.find(func => func.nome === nomeFuncionario);
+
+        if (!funcionarioFilter) {
+            console.log("\nFuncionário não encontrado");
+            return null;
+        }
+
+        return funcionarioFilter;
     }
 
-    registrarHoras(id, horas) {
-        // código para registrar horas trabalhadas
-        const funcionario = funcionarios.find(funcionario => funcionario.id === id);
-    
-        if (!funcionario) {
-            console.log("Funcionário não encontrado");
-            return;
+    calcularSalarioMensal(): number {
+       return parseFloat((this.horasTrabalhadasFuncionario() * this.taxaHoraria).toFixed(2))
+    }
+
+    private horasTrabalhadasFuncionario(): number {
+        let totalHoras = 0;
+
+        if(this.horasTrabalhadas) {
+            this.horasTrabalhadas.forEach(hora => {
+                totalHoras += hora.getHoraTrabalhada();
+            });
         }
     
-        const newHoratrabalhada = {
-            id: v4(),
-            horaTrabalhada: horas,
-            data : new Date()
-       }
-    
-        funcionario.horasTrabalhadas.push(newHoratrabalhada);
-        console.log(">>> Horas registradas com sucesso!");
-        console.log(funcionario);
-    } */
-
-    private horasTrabalhadasFuncionario() {
-        let totalHoras = 0;
-    
-       /*  this.horasTrabalhadas.forEach(hora => {
-            totalHoras += parseInt(hora.horaTrabalhada);
-        });
-     */
         return totalHoras;
     
     }

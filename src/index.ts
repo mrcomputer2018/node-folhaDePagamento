@@ -22,17 +22,16 @@ while (continuar === "s" || continuar === "S") {
             console.log("\n------------------------")
             console.log("\nPreencha os campos abaixo:")
 
-            const nome = prompt("Digite o nome do funcionário: ");
+            let nome = prompt("Digite o nome do funcionário: ");
             const cargo = prompt("Digite o cargo do funcionário: ");
             const taxaHoraria = +prompt("Digite a taxa horária do funcionário: ");
             
-            funcionario.setNome(nome);
-            funcionario.setCargo(cargo);
-            funcionario.setTaxaHoraria(taxaHoraria)
+            // Criação de uma nova instância para cada funcionário
+            const novoFuncionario = new Funcionario(nome, cargo, taxaHoraria);
             
-            console.log(funcionario.getDetalhesFuncionario());
+            console.log(novoFuncionario.getDetalhesFuncionario());
 
-            funcionarios.push(funcionario);
+            funcionarios.push(novoFuncionario);
 
             console.log("\n\nFuncionário cadastrado com sucesso!");
             
@@ -41,30 +40,28 @@ while (continuar === "s" || continuar === "S") {
         case "2":
             console.log("\nRegistrar Horas Trabalhadas")
             console.log("------------------------")
-           /* nome = prompt("\nDigite o nome do funcionário: ");
-            funcionarioFilter = localizarFuncionarioPorNome(nome.toLowerCase());
+            console.log("\nPreencha os campos abaixo:")
 
-            if (!funcionarioFilter) {
-                console.log("\nFuncionário não encontrado");
+            const funcionarioEncontrado = funcionario.localizarFuncionarioPorNome(funcionarios);
+
+            if (funcionarioEncontrado === null) {
                 break;
             }
+        
+            const horas = +prompt("\nDigite a quantidade de horas trabalhadas: ");
 
-            const horas = prompt("\nDigite a quantidade de horas trabalhadas: ");
-
-            registrarHoras (funcionarioFilter.id, horas); */
-
-            const horaTrabalhada = prompt("\nDigite a quantidade de horas trabalhadas: ");
-
-            horasTrabalhadas.setHoraTrabalhada(horaTrabalhada)
+            const novaHoraTrabalhada = new HoraTrabalhada(horas); // Criação de uma nova instância
             
-            listHorasTrabalhadas.push(horasTrabalhadas);
+            listHorasTrabalhadas.push(novaHoraTrabalhada);
 
-            funcionario.setHorasTrabalhadas(listHorasTrabalhadas)
+           
+            funcionarioEncontrado.setHorasTrabalhadas(listHorasTrabalhadas);
+           
 
             console.log(listHorasTrabalhadas);
 
             console.log("\nHoras registradas com sucesso!");
-
+            
             break;
         case "3":
             console.log("\nListar Funcionários")
@@ -72,25 +69,23 @@ while (continuar === "s" || continuar === "S") {
             console.log("\nLista de Funcionários:")
 
             console.log(funcionarios)
+
             break;
         case "4":
-            console.log("\nCalcular Folha de Pagamento")
+            console.log("\nCalcular salario Mensal")
             console.log("\n------------------------")
             console.log("Preencha os campos abaixo:")
 
-            /* nome = prompt("\nDigite o nome do funcionário: ");
-            funcionarioFilter = localizarFuncionarioPorNome(nome.toLowerCase());
-
-            if (!funcionarioFilter) {
-                console.log("\nFuncionário não encontrado");
+            if (funcionario.getHorasTrabalhadas() === undefined) {
+                console.log("\nFuncionário não possui horas trabalhadas registradas")
                 break;
             }
 
-            const salario = calcularSalarioMensal(funcionarioFilter);
-            const INSS =  calcularInss(salario);
+            if (funcionario.localizarFuncionarioPorNome(funcionarios) === null) {
+                break;
+            }
 
-            console.log(`\nO salário mensal bruto do funcionário ${funcionarioFilter.nome} é R$ ${salario}`);
-            console.log(`\nO desconto do INSS do funcionário ${funcionarioFilter.nome} é R$ ${INSS}`); */
+            console.log("Salario mensal de R$" + funcionario.calcularSalarioMensal());
 
             break;
         case "5":
