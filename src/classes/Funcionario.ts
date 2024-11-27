@@ -22,6 +22,18 @@ export default class Funcionario {
         return this.horasTrabalhadas;
     }
 
+    setNome(nome: string) {
+        this.nome = nome
+    }
+
+    setCargo(cargo: string){
+        this.cargo = cargo
+    }
+
+    setTaxaHoraria(taxaHoraria: number) {
+        this.taxaHoraria = taxaHoraria;
+    }
+
     setHorasTrabalhadas(horasTrabalhadas: Horatrabalhada[]) { 
         const newHorasTrabalhadas = [...(this.horasTrabalhadas ?? []), ...horasTrabalhadas];
         this.horasTrabalhadas = newHorasTrabalhadas;

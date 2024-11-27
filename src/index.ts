@@ -1,10 +1,16 @@
 import Funcionario from "./classes/Funcionario";
+import Horatrabalhada from "./classes/HoraTrabalhada";
 import HoraTrabalhada from "./classes/HoraTrabalhada";
 const prompt = require('prompt-sync')();
 
 console.log("Bem-vindo aa Sistema de Folha de Pagamentos")
 
 let continuar = "s";
+
+const funcionarios: Funcionario[] = [];
+const listHorasTrabalhadas: HoraTrabalhada[] = []
+const funcionario: Funcionario = new Funcionario("", "", 0);
+const horasTrabalhadas: Horatrabalhada = new HoraTrabalhada(0)
 
 while (continuar === "s" || continuar === "S") {
 
@@ -20,9 +26,13 @@ while (continuar === "s" || continuar === "S") {
             const cargo = prompt("Digite o cargo do funcionário: ");
             const taxaHoraria = +prompt("Digite a taxa horária do funcionário: ");
             
-            const funcionario = new Funcionario(nome, cargo, taxaHoraria);
+            funcionario.setNome(nome);
+            funcionario.setCargo(cargo);
+            funcionario.setTaxaHoraria(taxaHoraria)
             
             console.log(funcionario.getDetalhesFuncionario());
+
+            funcionarios.push(funcionario);
 
             console.log("\n\nFuncionário cadastrado com sucesso!");
             
@@ -42,15 +52,16 @@ while (continuar === "s" || continuar === "S") {
             const horas = prompt("\nDigite a quantidade de horas trabalhadas: ");
 
             registrarHoras (funcionarioFilter.id, horas); */
+
             const horaTrabalhada = prompt("\nDigite a quantidade de horas trabalhadas: ");
+
+            horasTrabalhadas.setHoraTrabalhada(horaTrabalhada)
             
-            const horasTrabalhadas: HoraTrabalhada[] = [];
+            listHorasTrabalhadas.push(horasTrabalhadas);
 
-            const horatrabalhada = new HoraTrabalhada(horaTrabalhada);
+            funcionario.setHorasTrabalhadas(listHorasTrabalhadas)
 
-            horasTrabalhadas.push(horatrabalhada);
-
-            console.log(horasTrabalhadas);
+            console.log(listHorasTrabalhadas);
 
             console.log("\nHoras registradas com sucesso!");
 
@@ -59,6 +70,8 @@ while (continuar === "s" || continuar === "S") {
             console.log("\nListar Funcionários")
             console.log("\n------------------------")
             console.log("\nLista de Funcionários:")
+
+            console.log(funcionarios)
             break;
         case "4":
             console.log("\nCalcular Folha de Pagamento")
